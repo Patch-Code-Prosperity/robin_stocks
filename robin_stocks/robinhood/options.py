@@ -35,7 +35,7 @@ def get_aggregate_positions(info=None):
     return(filter_data(data, info))
 
 @login_required
-def get_aggregate_open_positions(info=None, account_number=None):
+def get_aggregate_open_positions(info=None):
     """Collapses all open option positions for a stock into a single dictionary.
 
     :param info: Will filter the results to get a specific value.
@@ -67,7 +67,7 @@ def get_market_options(info=None):
 
 
 @login_required
-def get_all_option_positions(info=None):
+def get_all_option_positions(info=None, account_number=None):
     """Returns all option positions ever held for the account.
 
     :param info: Will filter the results to get a specific value.
@@ -76,7 +76,7 @@ def get_all_option_positions(info=None):
     a list of strings is returned where the strings are the value of the key that matches info.
 
     """
-    url = option_positions_url()
+    url = option_positions_url(account_number=account_number)
     data = request_get(url, 'pagination')
     return(filter_data(data, info))
 

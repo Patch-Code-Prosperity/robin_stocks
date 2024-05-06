@@ -242,13 +242,13 @@ def cancel_crypto_order(orderID):
 
 
 @login_required
-def cancel_all_stock_orders():
+def cancel_all_stock_orders(account_number=None):
     """Cancels all stock orders.
 
     :returns: The list of orders that were cancelled.
 
     """ 
-    url = orders_url()
+    url = orders_url(account_number=account_number)
     data = request_get(url, 'pagination')
 
     data = [item for item in data if item['cancel'] is not None]

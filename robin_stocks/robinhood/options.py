@@ -35,7 +35,7 @@ def get_aggregate_positions(info=None):
     return(filter_data(data, info))
 
 @login_required
-def get_aggregate_open_positions(info=None):
+def get_aggregate_open_positions(info=None, account_number=None):
     """Collapses all open option positions for a stock into a single dictionary.
 
     :param info: Will filter the results to get a specific value.

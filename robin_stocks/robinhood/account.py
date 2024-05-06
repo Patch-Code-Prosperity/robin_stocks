@@ -84,7 +84,7 @@ def get_historical_portfolio(interval=None, span='week', bounds='regular',info=N
     return(filter_data(data, info))
 
 @login_required
-def get_all_positions(info=None):
+def get_all_positions(info=None, account_number=None):
     """Returns a list containing every position ever traded.
 
     :param info: Will filter the results to get a specific value.
@@ -110,7 +110,7 @@ def get_all_positions(info=None):
                       * created_at
 
     """
-    url = positions_url()
+    url = positions_url(account_number=account_number)
     data = request_get(url, 'pagination')
 
     return(filter_data(data, info))
